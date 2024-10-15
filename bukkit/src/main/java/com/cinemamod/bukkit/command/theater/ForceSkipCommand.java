@@ -15,8 +15,9 @@ public class ForceSkipCommand extends TheaterOwnerCommandExecutor {
     @Override
     public boolean onTheaterOwnerCommand(Player player, Command command, String label, String[] args, Theater theater) {
         if (theater.isPlaying()) {
+            String currentTime = theater.getPlaying().getCurrentString();
             theater.forceSkip();
-            player.sendMessage(ChatColor.GOLD + "The video has been force skipped.");
+            player.sendMessage(ChatColor.GOLD + "The video has been force skipped. (" + currentTime + ")");
         } else {
             player.sendMessage(ChatColor.RED + "This theater is not playing anything.");
         }

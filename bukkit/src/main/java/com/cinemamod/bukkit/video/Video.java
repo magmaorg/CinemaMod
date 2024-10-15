@@ -77,6 +77,13 @@ public class Video implements Comparable<Video>, PacketByteBufSerializable<Video
         }
     }
 
+    public String getCurrentString() {
+        long currentDurationMillis = System.currentTimeMillis() - startedAt;
+        String currentDurationFormatted = DurationFormatUtils.formatDuration(currentDurationMillis, "H:mm:ss");
+
+        return reduceFormattedDuration(currentDurationFormatted);
+    }
+
     public String getTimeString() {
         long currentDurationMillis = System.currentTimeMillis() - startedAt;
         long totalDurationMillis = videoInfo.getDurationSeconds() * 1000;
