@@ -2,21 +2,12 @@ package com.cinemamod.bukkit.service.infofetcher;
 
 import com.cinemamod.bukkit.service.VideoServiceType;
 import com.cinemamod.bukkit.video.VideoInfo;
-import org.bytedeco.javacpp.Loader;
 
 import java.io.InputStream;
 import java.util.Scanner;
 import java.util.concurrent.CompletableFuture;
 
 public class FileVideoInfoFetcher extends VideoInfoFetcher {
-
-    // ffprobe.exe -i https://example.com/path/to/video.mp4 -show_entries format=duration -v quiet -of csv="p=0"
-
-    private static final String ffprobePath;
-
-    static {
-        ffprobePath = Loader.load(org.bytedeco.ffmpeg.ffprobe.class);
-    }
 
     private final String url;
     private final String requesterUsername;
@@ -32,7 +23,7 @@ public class FileVideoInfoFetcher extends VideoInfoFetcher {
         return CompletableFuture.supplyAsync(() -> {
             try {
                 Process process = new ProcessBuilder(
-                        ffprobePath,
+                        "/usr/bin/ffprobe",
                         "-i",
                         url,
                         "-show_entries",
