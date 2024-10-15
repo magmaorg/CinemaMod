@@ -102,4 +102,8 @@ public class TheaterManager {
         this.theaters = theaters;
     }
 
+    public synchronized void clear() {
+        this.theaters = new ArrayList<>();
+    }
+
 }

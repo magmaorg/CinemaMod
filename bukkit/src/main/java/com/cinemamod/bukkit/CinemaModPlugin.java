@@ -105,6 +105,7 @@ public class CinemaModPlugin extends JavaPlugin {
             getServer().getScheduler().runTaskTimer(this, new PlayerListUpdateTask(this), 20L, 20L);
         }
 
+        getCommand("reload").setExecutor(new ReloadCommand(this));
         getCommand("request").setExecutor(new RequestCommand(this));
         getCommand("forceskip").setExecutor(new ForceSkipCommand(this));
         getCommand("voteskip").setExecutor(new VoteSkipCommand(this));

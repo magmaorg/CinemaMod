@@ -5,6 +5,8 @@ api-version: 1.18
 author: ds58
 depend: [ WorldGuard, ProtocolLib ]
 commands:
+  reload:
+    description: Reload CinemaMod
   request:
     description: Request a video to be added to a theater queue
     aliases: [ rq ]
